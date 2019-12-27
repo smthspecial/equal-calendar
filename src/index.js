@@ -115,3 +115,12 @@ app.insertAdjacentHTML(
   "afterbegin",
   displayEqualDate(getEqualDate(Date.now()))
 );
+
+
+var typeNumber = 4;
+var errorCorrectionLevel = 'L';
+var qr = qrcode(typeNumber, errorCorrectionLevel);
+qr.addData('Hi!');
+qr.make();
+console.log(qr)
+document.getElementById('placeHolder').innerHTML = qr.createImgTag();

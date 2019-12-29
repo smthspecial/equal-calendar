@@ -3,14 +3,27 @@
   <head>
     <title>Parcel Sandbox</title>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,600&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="src/style.css">
   </head>
 
   <body>
-    <div id="app"></div>
-    <input type="date" name="" id="date" />
-    <div id="selected-date"></div>
+    <div class="container">
+      <div id="app" class="today-date-wrapper">
+
+        <p class="description">
+          It's a converter, that transform current date from <a href="https://en.wikipedia.org/wiki/Gregorian_calendar">Gregorian calendar</a> to the date at <a href="https://en.wikipedia.org/wiki/International_Fixed_Calendar">Fixed(Equal) calendar</a>
+        </p>
+        <h1 class="today-date">Today is</h1>
+      </div>
+      <div class="selected-date-wrapper">
+        <input type="date" name="" id="date" />
+        <h2 id="selected-date"></h2>
+      </div>
+    </div>
     <div id="placeHolder"></div>
+
+
     <script src="src/qrcode.js"></script>
     <script src="src/index.js"></script>
   </body>

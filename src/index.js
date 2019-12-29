@@ -1,4 +1,7 @@
 const getEqualDate = date => {
+  if(!date) {
+    return "There is no date"
+  }
   if (typeof date === "number" || typeof date === "string") {
     date = new Date(date);
   }
@@ -36,7 +39,6 @@ const getEqualDate = date => {
 //     getDayOfweek(currentDayOfWeek)
 //   );
   if (thisYear % 4 === 0 || thisYear % 400 === 0) {
-    const diffDays = 28 * 13 + 2;
     if (diffDays === 28 * 8 + 1) {
       const currentMonth = Math.ceil(diffDays / 28);
       const currentDay = diffDays % 28;
@@ -98,21 +100,28 @@ inputDate.addEventListener("input", e => {
 });
 
 const displayEqualDate = date => {
+  if(typeof date === "string") {
+    return `
+    <span> ${date} </span>
+    `
+  }
   if (date.highDay || date.lastDay) {
     return `
-      <span> ${date.weekDay && date.weekDay} </span>
+    <span> ${date.weekDay && date.weekDay} </span>
     `;
   }
   return `
-    <span> Today is ${date.currentMonth && date.currentMonth} month, </span>
+
+    <span> ${date.currentMonth && date.currentMonth} month, </span>
     <span> ${date.currentDay && date.currentDay} day, </span>
     <span> ${date.weekDay && date.weekDay}</span>
+
   `;
 };
 
-const app = document.querySelector("#app");
-app.insertAdjacentHTML(
-  "afterbegin",
+const todayDate = document.querySelector(".today-date");
+todayDate.insertAdjacentHTML(
+  "beforeend",
   displayEqualDate(getEqualDate(Date.now()))
 );
 
@@ -122,5 +131,4 @@ var errorCorrectionLevel = 'L';
 var qr = qrcode(typeNumber, errorCorrectionLevel);
 qr.addData('Hi!');
 qr.make();
-console.log(qr)
-document.getElementById('placeHolder').innerHTML = qr.createImgTag();
+// document.getElementById('placeHolder').innerHTML = qr.createImgTag();
